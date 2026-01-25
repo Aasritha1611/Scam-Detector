@@ -1,0 +1,12 @@
+# Virtual environment
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Models (optional – keep if you want)
+# models/
+
+# VS Code
+.vscode/

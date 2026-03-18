@@ -1,17 +1,21 @@
 import pandas as pd
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.linear_model import LogisticRegression
+from sklearn.pipeline import Pipeline
 import joblib
 
-from src.features.feature_extractor import extract_features
+df = pd.read_csv("data/dataset_large.csv")
 
-df = pd.read_csv("data/dataset.csv")
-
-X = df["text"].apply(extract_features).tolist()
-X = pd.DataFrame(X)
+X = df["text"]
 y = df["label"]
 
-model = RandomForestClassifier(n_estimators=100, random_state=42)
-model.fit(X, y)
+# Train a TF-IDF + Logistic Regression Pipeline
+pipeline = Pipeline([
+    ('tfidf', TfidfVectorizer(stop_words='english', max_features=1000)),
+    ('clf', LogisticRegression(random_state=42))
+])
 
-joblib.dump(model, "models/model.pkl")
-print("Model trained and saved")
+pipeline.fit(X, y)
+
+joblib.dump(pipeline, "models/model.pkl")
+print("TF-IDF + Logistic Regression Model trained and saved!")

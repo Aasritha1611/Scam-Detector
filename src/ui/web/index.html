@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScamGuard | AI Job Scam Detector</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-shield-halved"></i> ScamGuard
+        </div>
+        <div class="nav-links">
+            <a href="#examples">Examples</a>
+            <a href="#analytics">Network Stats</a>
+            <a href="#" class="btn-primary" id="reportBtn">Report Scam</a>
+        </div>
+    </nav>
+
+    <main class="hero">
+        <div class="hero-content">
+            <h1>Don't Fall For Fake Jobs.</h1>
+            <p>Our machine-learning engine instantly analyzes job offers and internship news to detect scams. Paste a message, email, or post below.</p>
+            
+            <div class="analysis-box">
+                <textarea id="textInput" placeholder="E.g., URGENT: We are urgently hiring for Data Entry. Pay is $500/day..."></textarea>
+                
+                <div class="action-row">
+                    <span id="charCount">0 characters</span>
+                    <button id="analyzeBtn" class="btn-primary">
+                        <span class="btn-text">Analyze Content</span>
+                        <span class="loader hidden"></span>
+                    </button>
+                </div>
+                <!-- Input validation error message -->
+                <div id="errorMsg" class="error-toast hidden"></div>
+            </div>
+            
+            <!-- Result Container -->
+            <div id="resultContainer" class="result-container hidden">
+                <div class="result-header" id="resultHeader">
+                    <i class="fa-solid fa-circle-check status-icon safe-color"></i>
+                    <h2 id="resultTitle">Content Appears Safe</h2>
+                </div>
+
+                <div class="confidence-section">
+                    <div class="confidence-labels">
+                        <span>Confidence Meter</span>
+                        <span id="confidencePercentage">0%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" id="confidenceFill"></div>
+                    </div>
+                    <div class="meter-legend">
+                        <span class="safe-text">Safe (0-40%)</span>
+                        <span class="suspicious-text">Suspicious (40-70%)</span>
+                        <span class="scam-text">Scam (70-100%)</span>
+                    </div>
+                </div>
+
+                <div class="reason-engine" id="reasonEngine">
+                    <h3><i class="fa-solid fa-brain"></i> Reason Engine</h3>
+                    <ul id="reasonList">
+                        <!-- Reasons injected via JS -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <section id="examples" class="examples-section">
+        <h2>Real vs Fake Examples</h2>
+        <div class="example-grid">
+            <div class="example-card safe">
+                <div class="badge badge-safe">Legitimate</div>
+                <p>"We are hiring a Software Engineer. Apply on our official careers portal at careers.company.com. Standard 3-round interview process."</p>
+            </div>
+            <div class="example-card scam">
+                <div class="badge badge-scam">Scam</div>
+                <p>"URGENT HIRING: Work from home data entry. Earn $500 a day! You just need to pay a $50 refundable registration fee to get started. WhatsApp HR now."</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="analytics" class="analytics-section">
+        <h2>Network Statistics</h2>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>142,501</h3>
+                <p>Scams Blocked</p>
+            </div>
+            <div class="stat-card">
+                <h3>99.2%</h3>
+                <p>Accuracy Rate</p>
+            </div>
+            <div class="stat-card">
+                <h3>324</h3>
+                <p>New Threats Daily</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 ScamGuard Intelligence. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

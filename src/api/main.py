@@ -2,6 +2,8 @@ from fastapi import FastAPI, HTTPException
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+import os
+import uvicorn
 import pandas as pd
 import joblib
 from pathlib import Path
@@ -58,3 +60,7 @@ def predict(data: JobText):
 web_dir = Path("src/ui/web")
 web_dir.mkdir(parents=True, exist_ok=True)
 app.mount("/", StaticFiles(directory="src/ui/web", html=True), name="web")
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run("src.api.main:app", host="0.0.0.0", port=port, reload=False)
